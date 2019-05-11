@@ -4,7 +4,7 @@
 
 <!-- Navbar -->
 <div class="w3-bar w3-teal w3-text-white">
-  <a href="index.html" class="w3-bar-item w3-button">Doxit.me</a>
+  <a href="index.html" class="w3-bar-item w3-button w3-left">DOXIT.ME</a>
   <a href="#" class="w3-bar-item w3-button w3-right">Login</a>
     <a href="#" class="w3-bar-item w3-button w3-right">Sign up</a>
 </div>
@@ -38,38 +38,64 @@
   <h4 class="w3-text-black">Explore</h4>
   </div>
   
-  <div class="w3-container w3-row-padding">
-    <div class="w3-quarter">
-      <div class="w3-card">
-        <div class="w3-white w3-text-black">
-          <h5>Professions</h5>
-        </div>
-      </div>
-    </div>
-    
-    <div class="w3-quarter">
-      <div class="w3-card">
-        <div class="w3-white w3-text-black">
-          <h5>Individuals</h5>
-        </div>
-      </div>
-    </div>
+	<div class="w3-bar w3-teal">
+		<button class="w3-bar-item w3-button w3-block" style="width:33%" onclick="openTab('professions')">Professions</button>
+		<button class="w3-bar-item w3-button w3-block" style="width:34%" onclick="openTab('individuals')">Individuals</button>
+		<button class="w3-bar-item w3-button w3-block" style="width:33%" onclick="openTab('organizations')">Organizations</button>
+	</div>
+	<div id="professions" class="frontPageTab">
+		<h2>Professions</h2>
+		<ul class="w3-ul w3-card-4" style="width:50%">
+			<li><button class="w3-bar-item w3-button w3-block w3-teal" onclick="">IT9</button></li>
+			<li><button class="w3-bar-item w3-button w3-block w3-teal" onclick="">Marketing</button></li>
+			<li><button class="w3-bar-item w3-button w3-block w3-teal" onclick="">Driver</button></li>
+		</ul>
+	</div>
 
-    <div class="w3-quarter">
-      <div class="w3-card">
-        <div class="w3-white w3-text-black">
-          <h5>Organizations</h5>
-        </div>
-      </div>
-    </div>
- 
+	<div id="individuals" class="frontPageTab" style="display:none">
+		<h2>Individuals</h2>
+		<table class="w3-table">
+			<tr>
+				<td><button class="w3-button w3-block w3-teal" onclick="">Jill</button></td>
+				<td><button class="w3-button w3-block w3-teal" onclick="">Eve</button></td>
+				<td><button class="w3-button w3-block w3-teal" onclick="">Adam</button></td>
+				<td><button class="w3-button w3-block w3-teal" onclick="">Dick</button></td>
+			</tr>
+			<tr>
+				<td><button class="w3-button w3-block w3-teal" onclick="">Strawberry</button></td>
+				<td><button class="w3-button w3-block w3-teal" onclick="">Berry</button></td>
+				<td><button class="w3-button w3-block w3-teal" onclick="">Apple</button></td>
+				<td><button class="w3-button w3-block w3-teal" onclick="">Orange</button></td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="organizations" class="frontPageTab" style="display:none">
+		<h2>Organizations</h2>
+		<ul class="w3-ul w3-card-4" style="width:50%">
+			<li>McDondon</li>
+			<li>Hong Kong Suicidal Institude</li>
+			<li>Anglo-Chinese Association</li>
+		</ul>
+	</div>
+	
+	<script>
+	function openTab(id) {
+		var i;
+		var x = document.getElementsByClassName("frontPageTab");
+		for (i = 0; i < x.length; i++) {
+			x[i].style.display = "none"; 
+		}
+		document.getElementById(id).style.display = "block"; 
+	}
+	</script>
   </div>
 </div>
 
 </div>
 <!-- Featured People -->
 
-<div class="w3-container w3-auto">
+<div class="w3-container w3-auto w3-padding-large">
   
   <div class="w3-container">
     <h3 class="w3-text-black">Featured People</h3>
@@ -125,5 +151,8 @@
   </div>
 </div>
 
+<div id="footer" class="w3-panel w3-teal">
+  <p>Footer</p>
+</div>
 </body>
 </html>
