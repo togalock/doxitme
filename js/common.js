@@ -17,3 +17,12 @@ function openTab(id) {
 	}
 	document.getElementById(id).style.display = "block";
 }
+
+function toggleLoginBox() {
+  var x = document.getElementById("loginBox");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className = x.className.replace("w3-hide", "w3-show");
+  } else {
+    x.className = x.className.replace("w3-show", "w3-hide");
+  }
+}
