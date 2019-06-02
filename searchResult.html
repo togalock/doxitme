@@ -48,8 +48,22 @@
 <div class="w3-container w3-auto w3-padding-large w3-mobile">
 	<h1 class="w3-text-black">Search Result</h1>
 
-  <div class="w3-container">
-    <h3 class="w3-text-black">Featured People <input type="image" class="w3-right" id="toggleView" src="img/listView.svg" onclick="javascript:toggleView();"></h3>
+  <div class="w3-container w3-bar">
+    <h3 class="w3-text-black w3-bar-item w3-left">Featured People</h3>
+	<input type="image" class="w3-bar-item w3-right" id="toggleView" src="img/listView.svg" onclick="javascript:toggleView();">
+	<div class="w3-dropdown-hover w3-bar-item w3-right">
+  		<button class="w3-button">Filter by</button>
+  		<div class="w3-dropdown-content w3-bar-block w3-border" style="right:0">
+			<a href="#" class="w3-bar-item w3-button">Number of Comments ↓</a>
+    		<a href="#" class="w3-bar-item w3-button">Number of Comments ↑</a>
+			<a href="#" class="w3-bar-item w3-button">Rating ↓</a>
+	    	<a href="#" class="w3-bar-item w3-button">Rating ↑</a>
+			<a href="#" class="w3-bar-item w3-button">New to Old</a>
+    		<a href="#" class="w3-bar-item w3-button">Old to New</a>
+			<a href="#" class="w3-bar-item w3-button">Verified Profile</a>
+    		<a href="#" class="w3-bar-item w3-button">Unverified Profile</a>
+  		</div>
+	</div>
   </div>
 	<!-- Hard coded Grid View -->
   <div class="w3-container w3-row-padding" id="gridView" style="display:;">
