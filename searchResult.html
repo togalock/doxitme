@@ -47,13 +47,14 @@
 
 <div class="w3-container w3-auto w3-padding-large w3-mobile">
 	<h1 class="w3-text-black">Search Result</h1>
+
   <div class="w3-container">
-    <h3 class="w3-text-black">Featured People</h3>
+    <h3 class="w3-text-black">Featured People <input type="image" class="w3-right" id="toggleView" src="img/listView.svg" onclick="javascript:toggleView();"></h3>
   </div>
+	<!-- Hard coded Grid View -->
+  <div class="w3-container w3-row-padding" id="gridView" style="display:;">
 
-  <div class="w3-container w3-row-padding">
-
-    <div class="w3-third">
+    <div class="w3-third w3-block">
       <div class="w3-card">
         <div class="w3-container w3-center">
           <img class="w3-image" src="img/man.png">
@@ -68,7 +69,7 @@
       </div>
     </div>
 
-    <div class="w3-third">
+    <div class="w3-third w3-block">
       <div class="w3-card">
         <div class="w3-container w3-center">
           <img class="w3-image" src="img/man.png">
@@ -83,7 +84,7 @@
       </div>
     </div>
 
-    <div class="w3-third">
+    <div class="w3-third w3-block">
       <div class="w3-card">
         <div class="w3-container w3-center">
           <a href="judy.html"><img class="w3-image" src="img/man.png"></a>
@@ -97,8 +98,55 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Hard coded List View -->
+  <div class="w3-container w3-row-padding" id="listView" style="display:none;">
+
+	<div class="w3-auto w3-padding">
+		<div class="w3-card w3-row">
+			<div class="w3-container w3-padding">
+				<img class="w3-image w3-circle w3-left w3-margin-right w3-onethird" src="img/man.png" style="width:20%">
+				<div class="w3-container w3-padding w3-twothird">
+					<b class="w3-xlarge w3-text-black">Andy Lau</b><br>
+					<p class="w3-text-grey">Singer/Actor</p>
+					<p>4.21/5.00</p>
+					<p>Andy Lau Tak-wah BBS MH JP[3] (traditional Chinese: 劉德華; simplified Chinese: 刘德华, born 27 September 1961), is a Hong Kong actor, singer, lyricist and film producer.</p>
+				</div>
+			</div>
+	  	</div>
+	</div>
+
+	<div class="w3-auto w3-padding">
+		<div class="w3-card w3-row">
+			<div class="w3-container w3-padding">
+				<img class="w3-image w3-circle w3-left w3-margin-right w3-onethird" src="img/man.png" style="width:20%">
+				<div class="w3-container w3-padding w3-twothird">
+					<b class="w3-xlarge w3-text-black">Chris Wong</b><br>
+					<p class="w3-text-grey">Student Tutor</p>
+					<p>4.77/5.00</p>
+					<p>Chris Wong creates lesson plans and teach those plans to the entire class, individually to students or in small groups, track student progress and present the information to parents, create tests.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="w3-auto w3-padding">
+		<div class="w3-card w3-row">
+			<div class="w3-container w3-padding">
+				<a href="judy.html"><img class="w3-image w3-circle w3-left w3-margin-right w3-onethird" src="img/man.png" style="width:20%"></a>
+				<div class="w3-container w3-padding w3-twothird">
+					<b class="w3-xlarge w3-text-black"><a href="judy.html">Judy Lai</a></b><br>
+					<p class="w3-text-grey">Artist</p>
+					<p>4.73/5.00</p>
+					<p>Judy Lai works independently, either commissioned by clients or on her own initiative, to create artistic works. She sells their works to museums, art galleries or directly to customers, based on talents and reputations built in the market.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 
   </div>
+
 </div>
 
 <!-- Footer -->

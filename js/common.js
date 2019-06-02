@@ -26,3 +26,16 @@ function toggleLoginBox() {
     x.className = x.className.replace("w3-show", "w3-hide");
   }
 }
+
+function toggleView() {
+  var x = document.getElementById("toggleView");
+  if (x.src.indexOf("listView") == -1) {
+    x.src = "img/listView.svg";
+	document.getElementById("listView").style.display = "none";
+	document.getElementById("gridView").style.display = "";
+  } else {
+    x.src = "img/gridView.svg";
+	document.getElementById("gridView").style.display = "none";
+	document.getElementById("listView").style.display = "";
+  }
+}
