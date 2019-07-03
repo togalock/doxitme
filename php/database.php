@@ -69,11 +69,30 @@ class Database {
 	public function insert($table, $assoc) {
 		$keys = implode(",", array_keys($assoc));
 		$values = implode(",", array_values($assoc));
-		if ($result = $db->query("INSERT INTO $table ($keys) VALUES ($values)")) {
+		$query = "INSERT INTO $table ($keys) VALUES ($values)";
+		if ($result = $db->query($query)) {
 			return True;
 		}
 		else {
-			return null;
+			return False;
+		}
+	}
+	
+	public function update($table, $id_key, $id_value, $assoc) {
+		$id_value = is_string($id_value) ? "'$id_value'" : $id_value;
+		$pairs = array();
+		foreach ($assoc as $key => $value) {
+			if ($key != $id_key) {
+				array_push($pairs, "$key = $value");
+			}
+		}
+		$combined_pairs = implode(",", $pairs);
+		$query = "UPDATE $table SET $combined_pairs WHERE $id_key = $id_value";
+		if ($result = $db->query($query)) {
+			return True;
+		}
+		else {
+			return False;
 		}
 	}
 	
