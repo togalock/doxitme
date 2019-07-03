@@ -20,15 +20,15 @@ class Token {
 		$created_at = time();
 		
 		foreach(self::KEYS as $key) {
-			if (is_null(${$key}) or self::validate_item($key, ${$key})) {
+			if (is_null(${$key}) or self::validate_item($key, ${$key})):
 				$this->{$key} = ${$key};
-			}
+			endif;
 		}
 		
 	}
 	
 	public static function validate_item($key, $value) {
-		switch ($key) {
+		switch ($key):
 			case "token":
 				return ctype_alnum($value) and strlen($value) == 30;
 			case "token_type":
@@ -41,7 +41,7 @@ class Token {
 				return is_int($value);
 			default:
 				return False;
-		}
+		endswitch;
 	}
 	
 	public function sqlize() {
@@ -49,23 +49,22 @@ class Token {
 		$assoc = array();
 		
 		foreach (self::KEYS as $key) {
-			if (!is_null($this->{$key})) {
-				if (is_string($this->{$key})) {
+			if (!is_null($this->{$key})):
+				if (is_string($this->{$key})):
 					$assoc[$key] = "'{$this->{$key}}'";
-				}
-				else {
-					$assoc[$key] = $this->{$key};	
-				}
-			}
+				else:
+					$assoc[$key] = $this->{$key};
+				endif;
+			endif;
 		}
 		
-		if (!is_null($assoc["created_at"])) {
+		if (!is_null($assoc["created_at"])):
 			$assoc["created_at"] = \h\cast_date($assoc["created_at"], "date");
-		}
+		endif;
 		
-		if (!is_null($assoc["expires_at"])) {
+		if (!is_null($assoc["expires_at"])):
 			$assoc["expires_at"] = \h\cast_date($assoc["expires_at"], "date");	
-		}
+		endif;
 		
 		return $assoc;
 	}
@@ -80,17 +79,17 @@ class TokenDB {
 	const TOKEN_LENGTH = 30;
 	
 	public function __construct($db) {
-		if ($db->query("SELECT * FROM tokens LIMIT 0")) {
+		if ($db->query("SELECT * FROM tokens LIMIT 0")):
 			$this->db = $db;
-		}
+		endif;
 	}
 	
 	public static function generate_token() {
 		$token = "";
 		
-		for ($char = 1; $char <= self::TOKEN_LENGTH; $char++) {
+		for ($char = 1; $char <= self::TOKEN_LENGTH; $char++):
 			$token .= self::VALID_CHARS[random_int(0, strlen(self::VALID_CHARS) - 1)];
-		}
+		endfor;
 		
 		return $token;
 		
@@ -98,24 +97,24 @@ class TokenDB {
 	
 	public function get_new_token() {
 		
-		for ($attempt = 1; $attempt <= 5; $attempt++) {
+		for ($attempt = 1; $attempt <= 5; $attempt++):
 			$token = self::generate_token();
 		
-			if ($db->query("SELECT token FROM tokens WHERE token = '$token' LIMIT 1", False)) {
+			if ($db->query("SELECT token FROM tokens WHERE token = '$token' LIMIT 1", False)):
 				return $token;
-			}
-		}
+			endif;
+		
+		endfor;
 		
 		return null;
 	}
 	
 	public function commit($token) {
-		if ($db->query("SELECT token FROM tokens WHERE token = '$token' LIMIT 1", False)) {
+		if ($db->query("SELECT token FROM tokens WHERE token = '$token' LIMIT 1", False)):
 			$db->insert("token", $token->sqlize());
-		}
-		else {
+		else:
 			$db->update("token", "token", "'$token->token'", $token->sqlize());
-		}
+		endif;
 	}
 }
 
