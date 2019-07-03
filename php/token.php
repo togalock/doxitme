@@ -59,11 +59,13 @@ class Token {
 		}
 		
 		if (!is_null($assoc["created_at"])):
-			$assoc["created_at"] = \h\cast_date($assoc["created_at"], "date");
+			$date = \h\cast_date($assoc["created_at"], "date");
+			$assoc["created_at"] = "'$date'";
 		endif;
 		
 		if (!is_null($assoc["expires_at"])):
-			$assoc["expires_at"] = \h\cast_date($assoc["expires_at"], "date");	
+			$date = \h\cast_date($assoc["expires_at"], "date");
+			$assoc["expires_at"] = "'$date'";
 		endif;
 		
 		return $assoc;
@@ -100,7 +102,7 @@ class TokenDB {
 		for ($attempt = 1; $attempt <= 5; $attempt++):
 			$token = self::generate_token();
 		
-			if ($db->query("SELECT token FROM tokens WHERE token = '$token' LIMIT 1", False)):
+			if ($this->db->query("SELECT token FROM tokens WHERE token = '$token' LIMIT 1", False)):
 				return $token;
 			endif;
 		
@@ -110,10 +112,10 @@ class TokenDB {
 	}
 	
 	public function commit($token) {
-		if ($db->query("SELECT token FROM tokens WHERE token = '$token' LIMIT 1", False)):
-			$db->insert("token", $token->sqlize());
+		if ($this->db->query("SELECT token FROM tokens WHERE token = '{$token->token}' LIMIT 1", False)):
+			$this->db->insert("tokens", $token->sqlize());
 		else:
-			$db->update("token", "token", "'$token->token'", $token->sqlize());
+			$this->db->update("tokens", "token", "'{$token->token}'", $token->sqlize());
 		endif;
 	}
 }

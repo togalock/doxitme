@@ -70,7 +70,8 @@ class Database {
 		$keys = implode(",", array_keys($assoc));
 		$values = implode(",", array_values($assoc));
 		$query = "INSERT INTO $table ($keys) VALUES ($values)";
-		if ($result = $db->query($query)):
+		echo $query;
+		if ($result = $this->db->query($query)):
 			return True;
 		else:
 			return False;
@@ -87,7 +88,8 @@ class Database {
 		endforeach;
 		$combined_pairs = implode(",", $pairs);
 		$query = "UPDATE $table SET $combined_pairs WHERE $id_key = $id_value";
-		if ($result = $db->query($query)):
+		echo $query;
+		if ($result = $this->db->query($query)):
 			return True;
 		else:
 			return False;
